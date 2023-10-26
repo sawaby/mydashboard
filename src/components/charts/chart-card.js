@@ -16,6 +16,7 @@ export default function ChartCard({type, title, chartData, chartOptions}) {
 
         <div className='md mt-16 lg:mt-0'>
             <div className='h-[250px] w-full xl:h-[350px]'>
+                
                 <ChartLayout 
                     type={type}
                     chartData={chartData}

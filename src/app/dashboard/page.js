@@ -1,5 +1,6 @@
-"use client";
-import ChartCard from "@/components/charts/chart-card";
+'use client'
+import dynamic from "next/dynamic";
+// import ChartCard from "@/components/charts/chart-card";
 import Widget from "@/components/widget";
 import {
   areaChartData,
@@ -28,6 +29,11 @@ import Tasks from "../tasks/page";
 import Kanban from "../kanban/page";
 import { useContext } from "react";
 import { GlobalContext } from "@/context";
+
+const ChartCard = dynamic(() => import("@/components/charts/chart-card"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
 export default function Dashboard() {
   const { allReportsData, allTasks } = useContext(GlobalContext);
@@ -93,46 +99,56 @@ export default function Dashboard() {
           />
         ))}
       </div>
+      { typeof window !== 'undefined' && (
       <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-3">
+     
         <ChartCard
           title={"Sales Analytics"}
           chartData={lineChartData}
           chartOptions={lineChartOptions}
           type={"line"}
         />
+    
         <ChartCard
           title={"Revenue Analytics"}
           chartData={barChartDataCategoryOne}
           chartOptions={barChartOptionsCategoryOne}
           type={"bar"}
         />
+   
         <ChartCard
           title={"Visitors Analytics"}
           chartData={areaChartData}
           chartOptions={areaChartOptions}
           type={"area"}
         />
+        
       </div>
-      <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-3">
-        <ChartCard
-          title={"Traffic Analytics"}
-          chartData={barChartDataCategoryTwo}
-          chartOptions={barChartOptionsCategoryTwo}
-          type={"bar"}
-        />
-        <ChartCard
-          title={"Task Analytics"}
-          chartData={pieChartData}
-          chartOptions={pieChartOptions}
-          type={"pie"}
-        />
-        <ChartCard
-          title={"Mixed Analytics"}
-          chartData={mixedChartData}
-          chartOptions={mixedChartDataOptions}
-          type={"line"}
-        />
-      </div>
+      )
+      }
+      { typeof window !== 'undefined' && (
+        <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-3">
+
+          <ChartCard
+            title={"Traffic Analytics"}
+            chartData={barChartDataCategoryTwo}
+            chartOptions={barChartOptionsCategoryTwo}
+            type={"bar"}
+          />
+          <ChartCard
+            title={"Task Analytics"}
+            chartData={pieChartData}
+            chartOptions={pieChartOptions}
+            type={"pie"}
+          />
+          <ChartCard
+            title={"Mixed Analytics"}
+            chartData={mixedChartData}
+            chartOptions={mixedChartDataOptions}
+            type={"line"}
+          />
+        </div>
+      )}
       <div className="mt-5">
         <Reports />
       </div>

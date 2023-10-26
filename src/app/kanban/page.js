@@ -15,7 +15,7 @@ export default function Kanban(){
         doneItems,
         setDoneItems } = useContext(GlobalContext);
     return (
-    
+        typeof window !== 'undefined' && (
         <DndContext 
         collisionDetection={rectIntersection} 
         onDragEnd={(e) => {
@@ -98,6 +98,6 @@ export default function Kanban(){
                 <KanbanCard title={"Done"} tasks={doneItems} />
             </div>
         </DndContext>
-    
+        )
     )
 }

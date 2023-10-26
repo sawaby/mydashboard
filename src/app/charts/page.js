@@ -1,5 +1,6 @@
-"use client";
-import ChartCard from "@/components/charts/chart-card";
+
+// import ChartCard from "@/components/charts/chart-card";
+import dynamic from "next/dynamic";
 import { barChartDataCategoryOne,
      barChartOptionsCategoryOne,
      barChartOptionsCategoryTwo,
@@ -15,7 +16,10 @@ import { barChartDataCategoryOne,
 
      } from "@/utils/chart-data";
 
-
+     const ChartCard = dynamic(() => import("@/components/charts/chart-card"), {
+        ssr: false,
+        loading: () => <p>Loading...</p>,
+    });
 export default function Charts(){
     return (
         <div>

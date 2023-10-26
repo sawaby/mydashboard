@@ -76,9 +76,9 @@ export default function CommonModal() {
       
       <Dialog open={openModal} onClose={() => setOpenModal(false)}>
         <DialogContent className=" bg-zinc-400 dark:bg-zinc-700">
-          <span className="flex justify-center">
+          
           <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">Add a new report</h3>
-          </span>
+         
           <div className="flex flex-col gap-5 m-19" >
             {formControls.map((control, index) =>
               control.component === "input" ? (
