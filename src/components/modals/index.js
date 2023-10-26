@@ -45,7 +45,8 @@ export default function CommonModal() {
       component: "select",
       options:
         allTasks && allTasks.length
-          ? allTasks.map((item) => ({
+          ? allTasks.map((item, index) => ({
+              index: index,
               label: item.title,
               value: item.title,
             }))
