@@ -52,7 +52,7 @@ export default function CommonModal() {
           : [],
     },
   ];
-console.log(openModal)
+
     function handleAddNewReport(){
         let copyAllReportsData =  [...allReportsData];
         copyAllReportsData.push({

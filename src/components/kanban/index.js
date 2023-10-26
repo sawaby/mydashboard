@@ -40,7 +40,7 @@ export default function KanbanCard({ title, tasks }) {
       <div ref={setNodeRef} className="flex-1 flex gap-5 flex-col mt-4">
         {tasks && tasks.length > 0
           ? tasks.map((task, index) => (
-              <KanbanItem index={index} item={task} parent={title} />
+              <KanbanItem key={index} index={index} item={task} parent={title} />
             ))
           : null}
       </div>
