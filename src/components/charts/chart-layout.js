@@ -11,7 +11,7 @@ export default function ChartLayout({ chartData, chartOptions, type }) {
     setUpdateChartData(chartData);
 
     
-  }, []);
+  });
 
   return (
     typeof window !== 'undefined' &&
